@@ -1,0 +1,27 @@
+#include <iostream>
+#include <string>
+
+char* Sandwich(std::strin& line, char* bread_ptr) { 
+    char *startPtr = &line[0]; 
+    char* endPtr = startPtr + line.length() - 1;
+    for (char* ptr = startPtr; ptr <= endPtr; ptr++) {
+      char* next_ptr = ptr + 2;
+      if (*ptr == *bread_ptr && *next_ptr == *bread_ptr) {
+          if (ptr > startPtr && ptr < endPtr && next_ptr > startPtr && next_ptr < endPtr) {
+              return ptr; 
+          }
+      }
+    }
+    return nullptr;
+}
+
+
+int main() {
+    std::string line = "Char is a character";
+    char bread = 'a';
+    char* filling_ptr = Sandwich(line, &bread);
+    if (filling_ptr != nullptr) {
+        std::cout << *filling_ptr << std::endl; 
+    }
+    return 0;
+}

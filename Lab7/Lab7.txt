@@ -1,0 +1,46 @@
+Make a new folder in your workspace directory called splitter, and add three new files to it: main.cpp, functions.cpp and functions.hpp.
+You will create a split function:
+vector<string> split(string const &s, char sep=' ')
+
+The split() function should take in a string and return a vector<string> of the individual elements in the string that
+are separated by a given separator character (default of ' ').
+Examples:
+split("hello mom and dad") should return {"hello", "mom", "and", "dad"}
+split("1,2,3,4", ',') should return {"1", "2", "3", "4"}
+
+Open the file functions.hpp, and store the function declaration of split() there. 
+The declaration should be the snippet of code above with a additional semicolon at the end to indicate that it is just
+a declaration (a definition would have an open brace instead).
+As discussed in lecture, default parameter values go in the header file only. 
+The default cannot occur in the definition if the function previously had a declaration.
+This header file should wrap all of its contents using the #ifndef, #define, and #endif pre-processor statements,
+as discussed above. Make up your own variable name.
+Open functions.cpp, and write the definition of the function, split(), there. 
+Make sure it follows the declaration in functions.hpp. The parameter names do not matter, but the types do.
+Make sure the function signature matches for both the declaration and definition.
+You can compile functions.cpp (not build, at least not yet) to see if functions.cpp file is well-formed for C++. 
+It will not build an executable, but instead a .o (object) file. The object file is the result of compilation before
+building an executable – an in-between stage.
+ex: 
+g++ -std=c++20 -c main.cpp
+g++ -std=c++20 -c functions.cpp --> outputs functions.o
+Function: void print_vector(ostream &out, vector<string> const &v)
+This function prints all the elements of v to the output stream, out, with a single space after each.
+Note that both out and v are passed by reference.
+Store the function in functions.cpp, and put its declaration in functions.hpp like you did for split(). 
+Don’t forget the semicolon! at the end.
+Compile the function (not build, compile) to make sure it follows the rules.
+Compile: g++ -std=c++20 -c functions.cpp
+
+
+Your main() function should go in main.cpp.
+In main.cpp, be sure to #include "functions.hpp" (note the quotes). This makes all of the functions in functions.hpp
+available to main.cpp.
+Write a main() function that:
+1) Prompts for a string to be split
+2) Prompts for the single character to use for splitting the string
+3) Splits the string using the split() function (which, as a reminder, returns a vector<string>)
+4) Prints the vector using the print_vector() function
+Compile (not build) main.cpp to see that it follows the rules. Once you have successfully compiled it,
+build the project with the output executable name as “main” to test everything.
+Compile: g++ -std=c++20 -o main functions.o main.o
